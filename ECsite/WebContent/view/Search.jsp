@@ -9,6 +9,9 @@
 <title>検索画面</title>
 </head>
 <body>
+<form action ="/ECsite/logout" method ="POST">
+	<input type ="submit" value = ログアウト>
+	</form>
 <h1>検索</h1>
 <% ArrayList<CategoryBean> acb=(ArrayList<CategoryBean>)request.getAttribute("categoryinfo"); %>
 <% CategoryBean catbe = new CategoryBean(); %>

@@ -10,6 +10,7 @@ public class CartBean implements Serializable {
 	private int total;
 	private int procd;
 
+
 	public String getName() {
 		return name;
 	}

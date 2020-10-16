@@ -47,7 +47,8 @@ public class ProductDetailsServlet extends HttpServlet {
         String name = request.getParameter("name");
         int price = Integer.parseInt(request.getParameter("price"));
         int procd = Integer.parseInt(request.getParameter("procd"));
-        ArrayList<CartBean> cp =  (ArrayList<CartBean>)session.getAttribute("productbean");
+        int stock = Integer.parseInt(request.getParameter("stock"));
+        ArrayList<CartBean> cp =  (ArrayList<CartBean>)session.getAttribute("cartlist");
         if(cp == null) {
         cp =new ArrayList<CartBean>();
         }
@@ -57,12 +58,12 @@ public class ProductDetailsServlet extends HttpServlet {
         pb.setCount(count);
         pb.setProcd(procd);
         cp.add(pb);
-        session.setAttribute("productbean",cp);
+        //こっから取ってこい
+        session.setAttribute("cartlist",cp);
 
 	    RequestDispatcher rd = request.getRequestDispatcher("/view/Cart.jsp");
 	    rd.forward (request, response);
 	    return;
-
 
 
 	}

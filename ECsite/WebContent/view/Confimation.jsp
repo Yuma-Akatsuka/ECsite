@@ -8,8 +8,11 @@
 <title>購入確認画面</title>
 </head>
 <body>
+<form action ="/ECsite/logout" method ="POST">
+	<input type ="submit" value = ログアウト>
+	</form>
 <h1>購入してよろしいですか？？？</h1>
-<% ArrayList<CartBean> cartlist = (ArrayList<CartBean>)session.getAttribute("productbean"); %>
+<% ArrayList<CartBean> cartlist = (ArrayList<CartBean>)session.getAttribute("cartlist"); %>
 <% CartBean cartbe = new CartBean(); %>
 <table border="1" style="border-collapse: collapse">
   <tr><td>商品名</td>
@@ -35,7 +38,7 @@
  	 <tr><td colspan = "2">合計</td>
  	 <td><%=total%></td>
 
- 	<form action = method ="POST">
+ 	<form action ="/ECsite/confimation" method ="POST">
 	<input type ="submit" value = はい>
 	</form>
 	<form action ="/ECsite/back" method ="POST">

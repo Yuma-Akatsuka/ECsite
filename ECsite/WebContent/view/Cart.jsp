@@ -8,8 +8,11 @@
 <title>カート画面</title>
 </head>
 <body>
+<form action ="/ECsite/logout" method ="POST">
+	<input type ="submit" value = ログアウト>
+	</form>
 <h1>カート</h1>
-<% ArrayList<CartBean> cartlist = (ArrayList<CartBean>)session.getAttribute("productbean"); %>
+<% ArrayList<CartBean> cartlist = (ArrayList<CartBean>)session.getAttribute("cartlist"); %>
 <% CartBean cartbe = new CartBean(); %>
  <table border="1" style="border-collapse: collapse">
     <tr><td>商品名</td>

@@ -227,6 +227,42 @@ public class ProductDao {
 	} catch(Exception ex) { }
 	}
 	return pb;
+	}
 
 
-	}}
+
+	public int zaiko(int stock,int pro_cd) {
+		String url = "jdbc:mysql://localhost/ECsite";
+		String id = "root";
+		String pw = "password";
+		Connection cnct = null;
+		PreparedStatement pst = null;
+		ResultSet rs = null;
+	try {
+	Class.forName("com.mysql.jdbc.Driver");
+	cnct = DriverManager.getConnection(url,id,pw);
+	String query = "update product set stock_no=? where pro_cd=?";
+	pst = cnct.prepareStatement(query);
+	pst.setInt(1,stock);
+	pst.setInt(2,pro_cd);
+	pst.executeUpdate();
+
+	} catch (ClassNotFoundException ex) {
+		ex.printStackTrace();
+	} catch (SQLException ex) {
+		ex.printStackTrace();
+	} finally {
+		try {
+			if (pst != null)
+				pst.close();
+			if (cnct != null)
+				cnct.close();
+		} catch (Exception ex) {
+		}
+	}
+	return stock;
+
+}}
+
+
+
