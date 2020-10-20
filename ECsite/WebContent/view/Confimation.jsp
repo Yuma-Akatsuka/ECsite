@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" import = "model.CartBean"
-    import = "java.util.ArrayList"%>
+    import = "java.util.ArrayList"  import = " java.text.NumberFormat"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,6 +14,7 @@
 <h1>購入してよろしいですか？？？</h1>
 <% ArrayList<CartBean> cartlist = (ArrayList<CartBean>)session.getAttribute("cartlist"); %>
 <% CartBean cartbe = new CartBean(); %>
+<% NumberFormat nfCur = NumberFormat.getCurrencyInstance();%>
 <table border="1" style="border-collapse: collapse">
   <tr><td>商品名</td>
     <td>単価</td>
@@ -24,7 +25,7 @@
   	<% for(int i=0;i < cartlist.size();i++){
     cartbe = cartlist.get(i); %>
     <tr><td><%=cartbe.getName()%></td>
-    <td><%=cartbe.getPrice()%></td>
+    <td><%=nfCur.format(cartbe.getPrice())%></td>
     <td><%=cartbe.getCount()%></td></tr>
 	<%price= price+cartbe.getPrice() * cartbe.getCount();%>
     <% } %>
@@ -34,9 +35,9 @@
   	<%int tax2 = Math.round((price * tax) / 100);%>
   	<%int total =price + tax2;   %>
   	 <tr><td colspan = "2">消費税</td>
-  	 <td><%= tax2 %></td></tr>
+  	 <td><%= nfCur.format(tax2) %></td></tr>
  	 <tr><td colspan = "2">合計</td>
- 	 <td><%=total%></td>
+ 	 <td><%=nfCur.format(total)%></td>
 
  	<form action ="/ECsite/confimation" method ="POST">
 	<input type ="submit" value = はい>

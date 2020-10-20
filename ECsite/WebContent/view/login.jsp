@@ -24,7 +24,7 @@
 <p>パスワード</p><input type="password" name="password"><br>
 <input type ="submit" value ="LOGIN">
 </form>
-<form action ="/view/Cart.jsp" method ="GET">
+<form action ="/ECsite/makeaccount" method ="GET">
 	<input type ="submit" value = アカウント作成>
 	</form>
 </body>

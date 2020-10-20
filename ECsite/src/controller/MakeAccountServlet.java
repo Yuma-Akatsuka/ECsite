@@ -51,20 +51,24 @@ public class MakeAccountServlet extends HttpServlet {
 		}
 		userbean userbean = new userbean();
 		userdao dao = new userdao();
-		dao.account(name, password);
+		int count =dao.account(name);
 
-		if (dao.account == 0) {
+
+		if (count != 0) {
 			request.setAttribute("error2", "この名前は既に使われています");
 			RequestDispatcher rd = request.getRequestDispatcher("/view/MakeAccount.jsp");
 			rd.forward(request, response);
 			return;
 
 	}else {
+			dao.accountadd(name,password);
 		request.setAttribute("OK", "登録完了");
-		 RequestDispatcher rd = request.getRequestDispatcher("/view/login.jsp");
+		 RequestDispatcher rd = request.getRequestDispatcher("/view/MakeAccount.jsp");
 		    rd.forward (request, response);
 		    return;
-	}}}
+	}
+
+	}}
 
 
 

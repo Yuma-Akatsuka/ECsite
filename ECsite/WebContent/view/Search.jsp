@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"  import="java.util.*,model.CategoryBean"
-  	import = "model.ProductBean" %>
+  	import = "model.ProductBean"   import = " java.text.NumberFormat"    %>
 <!DOCTYPE html>
 
 <html>
@@ -15,7 +15,7 @@
 <h1>検索</h1>
 <% ArrayList<CategoryBean> acb=(ArrayList<CategoryBean>)request.getAttribute("categoryinfo"); %>
 <% CategoryBean catbe = new CategoryBean(); %>
-
+<%NumberFormat nfCur = NumberFormat.getCurrencyInstance();%>
 <form action = "/ECsite/search" method ="POST">
 <select name= "category">
 <option value="">すべて</option>
@@ -43,7 +43,7 @@ catbe = acb.get(i); %>
     <% for(int i=0;i < plist.size();i++){
     probe = plist.get(i); %>
 	<tr><td><a href="/ECsite/search?pro_cd=<%=probe.getCd()%>"><%=probe.getName()%></a></td>
-	<td><%=probe.getPrice()%></td>
+	<td><%=nfCur.format(probe.getPrice())%></td>
 	<td><%=probe.getStock()%></td>
 	</tr>
     <% } %>

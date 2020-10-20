@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" import="java.util.*,model.ProductBean"
-  	import = "model.ProductBean" %>
+  	import = "model.ProductBean" import = " java.text.NumberFormat" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,14 +11,16 @@
 <form action ="/ECsite/logout" method ="POST">
 	<input type ="submit" value = ログアウト>
 	</form>
+
 <% ProductBean apb=(ProductBean)request.getAttribute("productlist"); %>
 <% String catname = (String)request.getAttribute("catname");%>
 <% ProductBean probe = new ProductBean(); %>
 <img src="<%= apb.getImg() %>">
+<%NumberFormat nfCur = NumberFormat.getCurrencyInstance();%>
 <table border="1" style="border-collapse: collapse">
 <tr><th>商品名</th>	<td><%=apb.getName() %></td></tr>
 <tr><th>カテゴリー</th> <td><%=catname %></td></tr>
-<tr><th>価格</th> <td><%=apb.getPrice() %></td></tr>
+<tr><th>価格</th> <td><%=nfCur.format(apb.getPrice()) %></td></tr>
 <tr><th>在庫</th> <td><%=apb.getStock() %></td></tr>
 <tr><th>商品説明</th> <td><%=apb.getMsg() %></td></tr>
 </table>
@@ -38,4 +40,5 @@
 <input type ="submit" value = 戻る >
 </form>
 </body>
+
 </html>
