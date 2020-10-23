@@ -5,6 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<link href="/ECsite/css/productdatails.css" rel="stylesheet" type="text/css">
 <title>商品詳細画面</title>
 </head>
 <body>
@@ -15,8 +16,12 @@
 <% ProductBean apb=(ProductBean)request.getAttribute("productlist"); %>
 <% String catname = (String)request.getAttribute("catname");%>
 <% ProductBean probe = new ProductBean(); %>
+<div class ="img">
 <img src="<%= apb.getImg() %>">
+</div>
 <%NumberFormat nfCur = NumberFormat.getCurrencyInstance();%>
+<div class ="text">
+
 <table border="1" style="border-collapse: collapse">
 <tr><th>商品名</th>	<td><%=apb.getName() %></td></tr>
 <tr><th>カテゴリー</th> <td><%=catname %></td></tr>
@@ -39,6 +44,7 @@
 <form action ="/ECsite/back" method ="POST">
 <input type ="submit" value = 戻る >
 </form>
+</div>
 </body>
 
 </html>

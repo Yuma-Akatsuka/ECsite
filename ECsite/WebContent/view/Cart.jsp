@@ -5,9 +5,11 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<link href="/ECsite/css/cart.css" rel="stylesheet" type="text/css">
 <title>カート画面</title>
 </head>
 <body>
+<div class = "text">
 <form action ="/ECsite/logout" method ="POST">
 	<input type ="submit" value = ログアウト>
 	</form>
@@ -46,7 +48,7 @@
 	<form action ="/ECsite/cart" method ="POST">
 	<input type ="submit" value = 購入>
 	</form>
-
+</div>
 
 
     </tr></table>

@@ -6,17 +6,23 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<link href="/ECsite/css/search.css" rel="stylesheet" type="text/css">
 <title>検索画面</title>
 </head>
 <body>
 <form action ="/ECsite/logout" method ="POST">
 	<input type ="submit" value = ログアウト>
-	</form>
+</form>
+
 <h1>検索</h1>
 <% ArrayList<CategoryBean> acb=(ArrayList<CategoryBean>)request.getAttribute("categoryinfo"); %>
 <% CategoryBean catbe = new CategoryBean(); %>
 <%NumberFormat nfCur = NumberFormat.getCurrencyInstance();%>
-<form action = "/ECsite/search" method ="POST">
+<div class ="text">
+<form action = "/ECsite/search" method ="POST" class="search_container">
+
+
+
 <select name= "category">
 <option value="">すべて</option>
 <% for(int i=0;i < acb.size();i++){
@@ -24,10 +30,9 @@ catbe = acb.get(i); %>
 <option value="<%= catbe.getId()%>"><%= catbe.getCategory()%></option>
 <%} %>
 </select>
-
-
-<input type="text" name="keyword">
-<input type ="submit" value ="検索">
+<input type="text" name="keyword" size="25" placeholder="キーワード検索">
+<input type="submit" value="検索">
+</form>
 
 <% ArrayList<ProductBean> plist = (ArrayList<ProductBean>)request.getAttribute("pattern"); %>
 <% ProductBean probe = new ProductBean(); %>
@@ -49,7 +54,6 @@ catbe = acb.get(i); %>
     <% } %>
      </table>
 	<% } %>
-
-</form>
+</div>
 </body>
 </html>

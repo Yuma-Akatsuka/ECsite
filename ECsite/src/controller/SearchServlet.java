@@ -57,7 +57,7 @@ public class SearchServlet extends HttpServlet {
 		String category = request.getParameter("category");
 
 
-		ProductBean productbean = new ProductBean();
+
 		ProductDao productdao = new ProductDao();
 		ArrayList<ProductBean> ap = new ArrayList<ProductBean>();
 

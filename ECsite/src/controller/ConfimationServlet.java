@@ -55,7 +55,7 @@ public class ConfimationServlet extends HttpServlet {
 		ProductBean productbean = new ProductBean();
 		CartBean cartbean =new CartBean();
 		userbean userbean =new userbean();
-		int Zaiko = 0;
+		int Zaiko = 1;
 
 		ArrayList<CartBean> cartlist = (ArrayList<CartBean>) session.getAttribute("cartlist");
 		ArrayList<ProductBean> prolist = productdao.Productlist1();
@@ -77,7 +77,7 @@ public class ConfimationServlet extends HttpServlet {
 		   System.out.println(Zaiko);
 		   productdao.zaiko(Zaiko-cb.getCount(),cb.getProcd());
 		}
-
+		session.removeAttribute("cartlist");
 		 RequestDispatcher rd = request.getRequestDispatcher("/view/Complete.jsp");
 		    rd.forward (request, response);
 		    return;
